@@ -1,0 +1,122 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+} 
+
+body {
+    background-color: #FFDBDA;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+
+}
+
+.game {
+   display: grid;
+    grid-template-columns: repeat(3, 18vmin);  
+    grid-template-rows: repeat(3, 18vmin);
+    gap: 1.5vmin;
+}
+
+.box {
+    background-color: #DB7F8E;
+    border-radius: 1vmin;
+    font-size: 8vmin;
+    cursor: pointer;
+    color: #604D53;
+} 
+
+#reset {
+    padding: 0.5rem;
+    font-family: 'Great Vibes', cursive;
+    font-size: 0.5rem;
+    color: #604D53;
+    background-color: #f0f0f0;
+    border-radius: 1rem;
+}
+
+
+#new-btn {
+    padding: 0.5rem;
+    font-size: 0.5rem;
+    background-color: #f0f0f0;
+    border-radius: 1rem;
+    color: #604D53;
+
+}
+
+#msg {
+    font-size: 1.5rem;
+    color: #604D53;
+    font-family: 'Great Vibes', cursive;
+}
+
+.msg-container {
+    height: 20vmin;
+}
+
+.hide {
+    display: none;
+}
+
+/* --- Animation 1: Winning Pop/Bounce Effect for Text --- */
+@keyframes popIn {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    70% {
+        transform: scale(1.1); /* Slight bounce overshoot */
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* --- Animation 2: Pulsing Glow Effect for the 3 Winning Boxes --- */
+@keyframes winnerGlow {
+    0% {
+        transform: scale(1);
+        background-color: #8b597b; /* Vibrant teal/green highlight */
+        box-shadow: 0 0 10px #8b597b;
+    }
+    50% {
+        transform: scale(1.05); /* Make them pop out slightly */
+        background-color: #9c026b;
+        box-shadow: 0 0 25px #9c026b;
+    }
+    100% {
+        transform: scale(1);
+        background-color: #8b597b;
+        box-shadow: 0 0 10px #8b597b;
+    }
+}
+
+/* --- Trigger Classes --- */
+.msg-container:not(.hide) #msg {
+    animation: popIn 0.5s ease-out forwards;
+}
+
+.winner-box {
+    animation: winnerGlow 1.2s ease-in-out infinite;
+    color: #ffffff !important; /* Make X or O text white during win */
+    z-index: 10; /* Ensures the glowing box stays on top */
+}
+
+h2 {
+    color:#604D53;
+    font-family: 'Great Vibes', cursive;
+}
